@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Draggable</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        #box{
+            width: 500px;
+            height: 500px;
+            background-color: #ddd;
+        }
+        #drag{
+            background-color: #abc;
+            width: 70px;
+            height: 70px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.js"></script>
+</head>
+<body>
+    <div id="box">
+        <div id="drag">Drag me</div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $('#drag').draggable({
+                // axis: 'x',
+                // revert: true,   // 回到原點
+
+                // 限制拖曳範圍
+                containment: 'parent',
+                // containment: 'window',
+                // containment: [0, 0, 500, 500],
+
+                // start: function(){},   // ES5
+                start(){   // ES6
+
+                },
+                drag(){},
+                stop(){},
+            })
+        })
+    </script>
+</body>
+</html>
