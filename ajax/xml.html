@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="button">Load</button>
+    <input type="text" />
+    <input type="text" />
+    <input type="text" />
+    <input type="text" />
+    <div id="result"></div>
+    <script>
+      let button = document.getElementById("button");
+      let result = document.getElementById("result");
+
+      // XML觸發
+      button.addEventListener("click", function () {
+        //step 1 建立XML檔案
+        let xhr = new XMLHttpRequest();
+        xhr.addEventListener("readystatechange", function () {
+          if (xhr.readyState == 4) {
+            //假如傳送的狀態是200 (發送成功)
+            if (xhr.status == 200) {
+                // step 3 接收 server 端資料
+              result.innerHTML = `<h1>${xhr.statusText}</h1>`;
+            } else {
+              result.innerHTML = `<h1>${xhr.statusText}</h1>`;
+            }
+          }
+        });
+        // step 2 發出請求並傳送出去
+        // ('method','可以處理資料的後端程式',同步或非同步)
+        xhr.open("GET", "./phpData.php", false);
+        xhr.send();
+
+        // xhr.open("POST", "./phpData.php", true);
+        // xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');  //POST方法必須設定
+        // xhr.send(`name=Peter&age=40`);
+
+      });
+    </script>
+  </body>
+</html>
